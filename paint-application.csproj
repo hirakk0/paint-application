@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -80,7 +81,31 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
+    <Folder Include="doc. - uml\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\bucket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\eraser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app. - ico\color_palette.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
