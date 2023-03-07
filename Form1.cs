@@ -15,6 +15,7 @@ namespace paint_application
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show("Hello paint-application!");
         }
     }
 }
