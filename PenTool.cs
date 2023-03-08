@@ -6,7 +6,7 @@ public class PenTool
 {
     private PictureBox pictureBox;
     private Point? previousPoint;
-    private Pen pen = new Pen(Color.Black, 5);
+    private Pen pen = new Pen(Color.Black, 1);
     private List<Point> points = new List<Point>();
 
     public PenTool(PictureBox pictureBox)
