@@ -4,14 +4,14 @@ using System.Windows.Forms;
 
 namespace paint_application
 {
-    public class ErasingTool
+    public class EreaseTool
     {
         private PictureBox pictureBox;
         private Point? previousPoint;
         private Pen erasingPen = new Pen(Color.White, 1);
         private List<Point> points = new List<Point>();
 
-        public ErasingTool(PictureBox pictureBox) 
+        public EreaseTool(PictureBox pictureBox)
         {
             this.pictureBox = pictureBox;
             pictureBox.MouseDown += PictureBox_MouseDown;
@@ -24,9 +24,9 @@ namespace paint_application
         }
         private void PictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left && previousPoint.HasValue) 
+            if (e.Button == MouseButtons.Left && previousPoint.HasValue)
             {
-                using(var graphics = pictureBox.CreateGraphics())
+                using (var graphics = pictureBox.CreateGraphics())
                 {
                     graphics.DrawLine(erasingPen, previousPoint.Value, e.Location);
                 }
@@ -37,7 +37,7 @@ namespace paint_application
         }
         private void PictureBox_Paint(object sender, PaintEventArgs e)
         {
-            using(var graphics = e.Graphics)
+            using (var graphics = e.Graphics)
             {
                 graphics.DrawLines(erasingPen, points.ToArray());
             }

@@ -1,43 +1,54 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-public class PenTool
+namespace PenToolExample
 {
-    private PictureBox pictureBox;
-    private Point? previousPoint;
-    private Pen pen = new Pen(Color.Black, 1);
-    private List<Point> points = new List<Point>();
+    public class PenTool
+    {
+        private Point? previousPoint;
+        private Pen pen;
+        private PictureBox pictureBox;
 
-    public PenTool(PictureBox pictureBox)
-    {
-        this.pictureBox = pictureBox;
-        pictureBox.MouseDown += PictureBox_MouseDown;
-        pictureBox.MouseMove += PictureBox_MouseMove;
-        pictureBox.Paint += PictureBox_Paint;
-    }
-    private void PictureBox_MouseDown(object sender, MouseEventArgs e)
-    {
-        previousPoint = e.Location;
-    }
-    private void PictureBox_MouseMove(object sender, MouseEventArgs e)
-    {
-        if (e.Button == MouseButtons.Left && previousPoint.HasValue)
+        public PenTool(PictureBox pictureBox)
         {
-            using (var graphics = pictureBox.CreateGraphics())
+            this.pictureBox = pictureBox;
+            this.pen = new Pen(Color.Black, 1); // толщина линии - 2
+            this.pictureBox.MouseMove += PictureBox_MouseMove;
+            this.pictureBox.MouseDown += PictureBox_MouseDown;
+            this.pictureBox.MouseUp += PictureBox_MouseUp;
+        }
+
+        private void PictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (previousPoint.HasValue)
             {
-                graphics.DrawLine(pen, previousPoint.Value, e.Location);
+                Point currentPoint = e.Location;
+                using (Graphics g = pictureBox.CreateGraphics())
+                {
+                    g.DrawLine(pen, previousPoint.Value, currentPoint);
+                }
+                previousPoint = currentPoint;
             }
-            points.Add(previousPoint.Value);
-            points.Add(e.Location);
+        }
+
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
             previousPoint = e.Location;
         }
-    }
-    private void PictureBox_Paint(object sender, PaintEventArgs e)
-    {
-        using (var graphics = e.Graphics)
+
+        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            graphics.DrawLines(pen, points.ToArray());
+            previousPoint = null;
+        }
+
+        public void SetPenColor(Color color)
+        {
+            pen.Color = color;
+        }
+
+        public void SetPenWidth(float width)
+        {
+            pen.Width = width;
         }
     }
 }
