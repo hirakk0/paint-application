@@ -14,7 +14,12 @@ namespace paint_application
 
         private void button4_Click(object sender, System.EventArgs e)
         {
-                var penTool = new PenTool(pictureBox1);
+            var penTool = new PenTool(pictureBox1);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var erasingTool = new ErasingTool(pictureBox1);
         }
     } 
 }
