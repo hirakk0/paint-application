@@ -77,6 +77,11 @@ namespace paint_application
             indexPaint = 4; // rectanglePaint
         }
 
+        private void button8_Click(object sender, System.EventArgs e)
+        {
+            indexPaint = 5; // linePaint
+        }
+
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             isPaint = false;
@@ -91,6 +96,10 @@ namespace paint_application
             if(indexPaint == 4)
             {
                 graphicsEngine.DrawRectangle(penPaint, cX, cY, sX, sY);
+            }
+            if(indexPaint == 5)
+            {
+                graphicsEngine.DrawLine(penPaint, cX, cY, x, y);
             }
         }
     }
