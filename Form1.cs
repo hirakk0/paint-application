@@ -1,25 +1,54 @@
-﻿using PenToolExample;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace paint_application
 {
     public partial class Form1 : Form
     {
-        private PenTool penTool;
-        private EreaseTool ereaseTool;
-
         public Form1()
         {
             InitializeComponent();
+            bitmapImage = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            graphicsEngine = Graphics.FromImage(bitmapImage);
+            graphicsEngine.Clear(Color.White);
+            pictureBox1.Image = bitmapImage;
         }
-        private void button4_Click(object sender, System.EventArgs e)
+        Bitmap bitmapImage;
+        Graphics graphicsEngine;
+        Point px, py;
+        Pen penPaint = new Pen(Color.Black, 1);
+
+        int indexPaint;
+        bool isPaint = false;
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            penTool = new PenTool(pictureBox1);
+            isPaint = true;
+            py = e.Location;
         }
 
-        private void button5_Click(object sender, System.EventArgs e)
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            EreaseTool ereaseTool = new EreaseTool(pictureBox1);
+            if (isPaint)
+            {
+                if(indexPaint == 1)
+                {
+                    px = e.Location;
+                    graphicsEngine.DrawLine(penPaint, px, py);
+                    py = px;
+                }
+            }
+            pictureBox1.Refresh();
+        }
+
+        private void button4_Click(object sender, System.EventArgs e)
+        {
+            indexPaint = 1;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isPaint = false;
         }
     }
 }

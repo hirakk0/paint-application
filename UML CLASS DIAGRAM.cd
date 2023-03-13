@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="paint_application.EreaseTool">
+    <Position X="9" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAABACAAAAAAAAAACAAAAABAAAAAAgAAAA=</HashCode>
+      <FileName>ErasingTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PenToolExample.PenTool">
+    <Position X="3.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAACABAwAAAAAACAAAAABAAAAAAgAAAA=</HashCode>
+      <FileName>PenTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="paint_application.Form1">
+    <Position X="6.25" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAACEAAAEBAACAAAACAMwzAAAAAAAMAQBAAAA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object">
+    <Position X="6.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="paint_application.Properties.Resources">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.375" Y="1.75" />
+        <Point X="7.375" Y="1.375" />
+        <Point X="12.5" Y="1.375" />
+        <Point X="12.5" Y="1.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAAAAAAAAJHCAAAQAAAACAAAgAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="System.Windows.Forms.Form.ControlCollection" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
