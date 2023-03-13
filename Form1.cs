@@ -20,12 +20,16 @@ namespace paint_application
         Pen erasePaint = new Pen(Color.White, 1);
 
         int indexPaint;
+        int x, y, sX, sY, cX, cY;
         bool isPaint = false;
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             isPaint = true;
             py = e.Location;
+
+            cX = e.X; 
+            cY = e.Y;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -46,6 +50,11 @@ namespace paint_application
                 }
             }
             pictureBox1.Refresh();
+
+            x = e.X; 
+            y = e.Y;
+            sX = e.X - cX;
+            sY = e.Y - cY;
         }
 
         private void button4_Click(object sender, System.EventArgs e)
@@ -58,9 +67,22 @@ namespace paint_application
             indexPaint = 2; // erasePaint
         }
 
+        private void button6_Click(object sender, System.EventArgs e)
+        {
+            indexPaint = 3;
+        }
+
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             isPaint = false;
+
+            sX = x - cX;
+            sY = y - cY;
+
+            if(indexPaint == 3)
+            {
+                graphicsEngine.DrawEllipse(penPaint, cX, cY, sX, sY);
+            }
         }
     }
 }
