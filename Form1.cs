@@ -17,6 +17,7 @@ namespace paint_application
         Graphics graphicsEngine;
         Point px, py;
         Pen penPaint = new Pen(Color.Black, 1);
+        Pen erasePaint = new Pen(Color.White, 1);
 
         int indexPaint;
         bool isPaint = false;
@@ -37,13 +38,24 @@ namespace paint_application
                     graphicsEngine.DrawLine(penPaint, px, py);
                     py = px;
                 }
+                if(indexPaint == 2)
+                {
+                    px = e.Location;
+                    graphicsEngine.DrawLine(erasePaint, py, px);
+                    py = px;
+                }
             }
             pictureBox1.Refresh();
         }
 
         private void button4_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 1;
+            indexPaint = 1; // penPaint
+        }
+
+        private void button5_Click(object sender, System.EventArgs e)
+        {
+            indexPaint = 2; // erasePaint
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
