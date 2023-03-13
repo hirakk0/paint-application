@@ -69,7 +69,12 @@ namespace paint_application
 
         private void button6_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 3;
+            indexPaint = 3; // ellipsePaint
+        }
+
+        private void button7_Click(object sender, System.EventArgs e)
+        {
+            indexPaint = 4; // rectanglePaint
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -82,6 +87,10 @@ namespace paint_application
             if(indexPaint == 3)
             {
                 graphicsEngine.DrawEllipse(penPaint, cX, cY, sX, sY);
+            }
+            if(indexPaint == 4)
+            {
+                graphicsEngine.DrawRectangle(penPaint, cX, cY, sX, sY);
             }
         }
     }
