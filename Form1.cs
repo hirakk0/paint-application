@@ -1,106 +1,85 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace paint_application
 {
     public partial class Form1 : Form
     {
+        private paintManager paintManager;
+
         public Form1()
         {
             InitializeComponent();
-            bitmapImage = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            graphicsEngine = Graphics.FromImage(bitmapImage);
-            graphicsEngine.Clear(Color.White);
-            pictureBox1.Image = bitmapImage;
-        }
-        Bitmap bitmapImage;
-        Graphics graphicsEngine;
-        Point px, py;
-        Pen penPaint = new Pen(Color.Black, 1);
-        Pen erasePaint = new Pen(Color.White, 1);
-
-        int indexPaint;
-        int x, y, sX, sY, cX, cY;
-        bool isPaint = false;
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            isPaint = true;
-            py = e.Location;
-
-            cX = e.X; 
-            cY = e.Y;
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isPaint)
-            {
-                if(indexPaint == 1)
-                {
-                    px = e.Location;
-                    graphicsEngine.DrawLine(penPaint, px, py);
-                    py = px;
-                }
-                if(indexPaint == 2)
-                {
-                    px = e.Location;
-                    graphicsEngine.DrawLine(erasePaint, py, px);
-                    py = px;
-                }
-            }
-            pictureBox1.Refresh();
-
-            x = e.X; 
-            y = e.Y;
-            sX = e.X - cX;
-            sY = e.Y - cY;
+            paintManager = new paintManager(pictureBox1, pictureBox2, pictureBox3);
         }
 
         private void button4_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 1; // penPaint
+            paintManager.SetPenPaint();
         }
 
         private void button5_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 2; // erasePaint
+            paintManager.SetErasePaint();
         }
 
         private void button6_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 3; // ellipsePaint
+            paintManager.SetEllipsePaint();
         }
 
         private void button7_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 4; // rectanglePaint
+            paintManager.SetRectanglePaint();
         }
 
         private void button8_Click(object sender, System.EventArgs e)
         {
-            indexPaint = 5; // linePaint
+            paintManager.SetLinePaint();
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            paintManager.OnMouseDown(e.Location, e.X, e.Y);
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            paintManager.OnMouseMove(e.Location, e.X, e.Y);
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            isPaint = false;
+            paintManager.OnMouseUp(e.X, e.Y);
+        }
 
-            sX = x - cX;
-            sY = y - cY;
+        private void button10_Click(object sender, System.EventArgs e)
+        {
+            paintManager.SetFormClear();
+        }
 
-            if(indexPaint == 3)
-            {
-                graphicsEngine.DrawEllipse(penPaint, cX, cY, sX, sY);
-            }
-            if(indexPaint == 4)
-            {
-                graphicsEngine.DrawRectangle(penPaint, cX, cY, sX, sY);
-            }
-            if(indexPaint == 5)
-            {
-                graphicsEngine.DrawLine(penPaint, cX, cY, x, y);
-            }
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            paintManager.PencilColorSelection();
+        }
+
+        private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            paintManager.OnMousePictureBox2Click(e.Location);
+        }
+
+        private void pictureBox1_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            paintManager.OnMousePictureBoxClick(e.Location);
+        }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+            paintManager.SetFillPaint();
+        }
+
+        private void button9_Click(object sender, System.EventArgs e)
+        {
+            paintManager.SaveToFile();
         }
     }
 }
