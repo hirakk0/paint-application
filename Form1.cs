@@ -81,5 +81,10 @@ namespace paint_application
         {
             paintManager.SaveToFile();
         }
+
+        private void button11_Click(object sender, System.EventArgs e)
+        {
+            paintManager.OpenToFile();
+        }
     }
 }

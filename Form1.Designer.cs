@@ -78,10 +78,11 @@
             // 
             this.button11.Location = new System.Drawing.Point(805, 9);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.Size = new System.Drawing.Size(75, 22);
             this.button11.TabIndex = 6;
-            this.button11.Text = "OPEN";
+            this.button11.Text = "SHOW FILE";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -99,7 +100,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 4;
-            this.button9.Text = "SAVE";
+            this.button9.Text = "SAVE FILE";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 

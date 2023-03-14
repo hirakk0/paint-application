@@ -131,6 +131,30 @@ namespace paint_application
             }
         }
 
+        public void OpenToFile()
+        {
+            var otf = new OpenFileDialog();
+            otf.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.bmp";
+            if (otf.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap btm = new Bitmap(otf.FileName);
+                pictureBox.Image = btm;
+                pictureBox.Enabled = true;
+            }
+        }
+
+        public void OpenFile()
+        {
+            var otf = new OpenFileDialog();
+            otf.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.bmp";
+            if (otf.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap btm = new Bitmap(otf.FileName);
+                pictureBox.Image = btm;
+                pictureBox.Enabled = true;
+            }
+        }
+
         public void OnMousePictureBoxClick(Point location)
         {
             if (indexPaint == 6)
